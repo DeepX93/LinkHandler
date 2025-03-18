@@ -3,18 +3,29 @@
 
     <application
         android:allowBackup="true"
-        android:theme="@style/Theme.AppCompat.Light">
+        android:theme="@style/Theme.AppCompat.Light"><?xml version="1.0" encoding="utf-8"?>
+		<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+			package="com.linkhero.linkhandler">
 
-        <!-- Background Service to Handle Links -->
-        <service android:name=".LinkInterceptorService"
-            android:exported="false" />
+			<application
+				android:allowBackup="true"
+				android:label="LinkHandler"
+				android:supportsRtl="true"
+				android:theme="@android:style/Theme.Black.NoTitleBar">
 
-        <!-- Content Provider for Plugin Communication -->
-        <provider
-            android:name=".PluginProvider"
-            android:authorities="com.linkhero.linkhandler.provider"
-            android:exported="true" />
+				<!-- Broadcast Receiver to handle links -->
+				<service android:name=".LinkInterceptorService"
+					android:exported="true">
+					<intent-filter>
+						<action android:name="android.intent.action.VIEW" />
+						<category android:name="android.intent.category.DEFAULT" />
+						<data android:scheme="http"/>
+						<data android:scheme="https"/>
+					</intent-filter>
+				</service>
 
-    </application>
+			</application>
+		</manifest>
+	</application>
 
 </manifest>
