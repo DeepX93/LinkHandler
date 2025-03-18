@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.linkhero.linkhandler">
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.linkhero.linkhandler"
+    tools:overrideLibrary="androidx.core.ktx">
 
     <application
         android:allowBackup="true"
@@ -7,7 +9,7 @@
         android:supportsRtl="true"
         android:theme="@android:style/Theme.Black.NoTitleBar">
 
-        <!-- Service to handle links -->
+        <!-- Service to handle intercepted links -->
         <service android:name=".LinkInterceptorService"
             android:exported="true">
             <intent-filter>
