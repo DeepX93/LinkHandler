@@ -17,5 +17,18 @@ public class LinkInterceptorService extends Service {
                 Log.d("LinkInterceptor", "Intercepted Link: " + interceptedLink);
 
                 // Send link to MacroDroid
-    
+                Intent macroIntent = new Intent("com.twofortyfouram.locale.intent.action.FIRE_SETTING");
+                macroIntent.putExtra("clickedlink", interceptedLink);
+                sendBroadcast(macroIntent);
+            }
+        }
+        stopSelf(); // Stop service after processing
+        return START_NOT_STICKY;
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        return null;
+    }
+}
 
